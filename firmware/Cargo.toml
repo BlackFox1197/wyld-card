@@ -1,0 +1,26 @@
+[package]
+name = "firmware"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[dependencies]
+embedded-graphics = "0.7.1"
+esp-idf-svc = { git = "https://github.com/esp-rs/esp-idf-svc.git" }
+esp-idf-sys = { version = "0.31.9", features = ["binstart"] }
+esp-idf-hal = { git = "https://github.com/esp-rs/esp-idf-hal.git" }
+sh1106 = "0.4.0"
+anyhow = "1"
+embedded-hal = "1.0.0-alpha.9"
+pn532 = { path = "pn532" }
+
+[build-dependencies]
+embuild = "0.30"
+anyhow = "1"
