@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wyld_card/presentation/main_page/main_page_screens/own_card_overview/own_card_overview.dart';
 
 class IndexMainPage extends StatefulWidget {
   const IndexMainPage({Key? key}) : super(key: key);
@@ -12,10 +13,7 @@ class _IndexMainPageState extends State<IndexMainPage> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    OwnCardOverview(),
     Text(
       'Index 1: Business',
       style: optionStyle,

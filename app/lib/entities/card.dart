@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wyld_card/entities/person.dart';
 
-class Card {
+class Buisiness_card {
   final Person person;
-  final String color;
+  final Color color;
+  final bool mainCard;
 
-  Card({required this.person, required this.color}){}
+  Buisiness_card( {required this.mainCard, required this.person, required this.color}){}
 }
