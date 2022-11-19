@@ -1,7 +1,7 @@
 part of 'own_card_overview_cubit.dart';
 
 
-enum OCOStatus {loading, loaded, saving}
+enum OCOStatus {loading, loaded, saving, saved}
 @CopyWith()
 class OwnCardOverviewState {
   final OCOStatus status;

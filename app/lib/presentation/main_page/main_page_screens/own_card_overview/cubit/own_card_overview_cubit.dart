@@ -19,7 +19,9 @@ class OwnCardOverviewCubit extends Cubit<OwnCardOverviewState> {
   Future<void> getCards() async{
 
     List<Buisiness_card> cards = await repo.getOwnCards();
-    emit(OwnCardOverviewState.loaded(cards, cards.indexWhere((element) => element.mainCard)));
+    int index = cards.indexWhere((element) => element.mainCard);
+
+    emit(OwnCardOverviewState.loaded(cards, cards.length > 0 && index < 0 ? 0 : index));
   }
 
 
@@ -30,11 +32,30 @@ class OwnCardOverviewCubit extends Cubit<OwnCardOverviewState> {
   }
 
   void addCard(Buisiness_card card){
-
+    emit(state.copyWith(status: OCOStatus.saving));
+    repo.saveNewCard(card).then((value) => getCards());
   }
 
 
-  void changeMainCard(Buisiness_card card){
+  void changeMainCard(){
+    Buisiness_card card;
+    if((state.selectedIndex??-1) >= 0){
+       card = state.cards[state.selectedIndex!];
+    }else{
+      return;
+    }
 
+    repo.changeMainCard(card).then((value) => getCards());
+  }
+
+  void deleteCard(){
+    Buisiness_card card;
+    if((state.selectedIndex??-1) >= 0){
+       card = state.cards[state.selectedIndex!];
+    }else{
+      return;
+    }
+
+    repo.deleteCard(card).then((value) => getCards());
   }
 }

@@ -26,15 +26,22 @@ class OwnCardOverview extends StatelessWidget {
               Center(child: BuisinessCardCard()),
               Spacer(),
               Spacer(),
-              MaterialButton(child: Text("Mock Card"), onPressed: () {
+              MaterialButton(child: Text("Add Card"), onPressed: () {
                 _showAddDialog(context);
-              })
+              }),
+              MaterialButton(child: Text("Delete Card"), onPressed: () {
+                context.read<OwnCardOverviewCubit>().deleteCard();
+              }),
+              MaterialButton(child: Text("Activate Card"), onPressed: () {
+                context.read<OwnCardOverviewCubit>().changeMainCard();
+              }),
             ],
           ) : CircularProgressIndicator();
         },
       ),
     );
   }
+
 
 
   _showAddDialog(BuildContext contextCubit) {
