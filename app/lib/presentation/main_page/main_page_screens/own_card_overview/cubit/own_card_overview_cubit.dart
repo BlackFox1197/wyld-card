@@ -3,6 +3,7 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:meta/meta.dart';
 import 'package:wyld_card/core/mock/mock_cards.dart';
 import 'package:wyld_card/entities/person.dart';
+import 'package:wyld_card/infrastructure/card_infra/card_repository.dart';
 
 import '../../../../../entities/card.dart';
 
@@ -11,11 +12,14 @@ part 'own_card_overview_cubit.g.dart';
 
 
 class OwnCardOverviewCubit extends Cubit<OwnCardOverviewState> {
+  final CardRepository repo = CardRepository();
   OwnCardOverviewCubit() : super(OwnCardOverviewState.initial()){getCards();}
 
 
   Future<void> getCards() async{
-    emit(OwnCardOverviewState.loaded(mock_cards, mock_cards.indexWhere((element) => element.mainCard)));
+
+    List<Buisiness_card> cards = await repo.getOwnCards();
+    emit(OwnCardOverviewState.loaded(cards, cards.indexWhere((element) => element.mainCard)));
   }
 
 
@@ -23,5 +27,14 @@ class OwnCardOverviewCubit extends Cubit<OwnCardOverviewState> {
     if(card != null){
       emit(state.copyWith(selectedIndex: state.cards.indexOf(card)));
     }
+  }
+
+  void addCard(Buisiness_card card){
+
+  }
+
+
+  void changeMainCard(Buisiness_card card){
+
   }
 }

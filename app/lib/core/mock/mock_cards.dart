@@ -10,5 +10,5 @@ List<Person> mock_persons = [
 
 List<Buisiness_card> mock_cards = [
   Buisiness_card(person: mock_persons[0], color: Colors.black, mainCard: true),
-  Buisiness_card(person: mock_persons[1], color: Colors.green, mainCard: false)
+  Buisiness_card(person: mock_persons[1], color: Colors.green, mainCard: true)
 ];

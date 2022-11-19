@@ -41,6 +41,9 @@ dependencies:
   flutter_bloc: ^8.1.1
   copy_with_extension: ^4.0.4
   build_runner: ^2.3.2
+  localstorage: ^4.0.0+1
+  uuid: ^3.0.7
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
