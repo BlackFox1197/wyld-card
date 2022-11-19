@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wyld_card/presentation/main_page/main_page_screens/own_card_overview/own_card_overview.dart';
+import 'package:wyld_card/presentation/main_page/main_page_screens/settings/settings_index.dart';
 
 class IndexMainPage extends StatefulWidget {
   const IndexMainPage({Key? key}) : super(key: key);
@@ -18,14 +19,7 @@ class _IndexMainPageState extends State<IndexMainPage> {
       'Index 1: Business',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    SettingsIndex()
   ];
 
   void _onItemTapped(int index) {
@@ -38,32 +32,28 @@ class _IndexMainPageState extends State<IndexMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: const Text('Cards'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.red,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            label: 'My Cards',
             backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.credit_card_outlined),
+            label: 'Business',
+            backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: Colors.pink,
+            backgroundColor: Colors.cyanAccent,
           ),
         ],
         currentIndex: _selectedIndex,

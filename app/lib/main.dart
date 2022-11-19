@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wyld_card/core/Cubits/settings_cubit/settings_cubit.dart';
 import 'package:wyld_card/presentation/main_page/index_main_page.dart';
 
 
@@ -13,13 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SettingsCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
 
-        primarySwatch: Colors.green,
+          primarySwatch: Colors.green,
+        ),
+        home: const IndexMainPage(),
       ),
-      home: const IndexMainPage(),
     );
   }
 }

@@ -16,26 +16,39 @@ class OwnCardOverview extends StatelessWidget {
       create: (context) => OwnCardOverviewCubit(),
       child: BlocBuilder<OwnCardOverviewCubit, OwnCardOverviewState>(
         builder: (context, state) {
-          return state.status == OCOStatus.loaded ? Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
-                child: CardSelector(),
-              ),
-              Spacer(),
-              Center(child: BuisinessCardCard()),
-              Spacer(),
-              Spacer(),
-              MaterialButton(child: Text("Add Card"), onPressed: () {
-                _showAddDialog(context);
-              }),
-              MaterialButton(child: Text("Delete Card"), onPressed: () {
-                context.read<OwnCardOverviewCubit>().deleteCard();
-              }),
-              MaterialButton(child: Text("Activate Card"), onPressed: () {
-                context.read<OwnCardOverviewCubit>().changeMainCard();
-              }),
-            ],
+          return state.status == OCOStatus.loaded ? Scaffold(
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {   _showAddDialog(context);}, child: Icon(Icons.add),),
+            body: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+                  child: CardSelector(),
+                ),
+                Spacer(),
+                Center(child: BuisinessCardCard()),
+                Spacer(),
+                Spacer(),
+                // MaterialButton(child: Text("Add Card"), onPressed: () {
+                //   _showAddDialog(context);
+                // }),
+                MaterialButton(child: Text("Activate Card"), onPressed: () {
+                  context.read<OwnCardOverviewCubit>().changeMainCard();
+                }),
+                Spacer(),
+                Row(
+
+                  children: [
+                    Spacer(),
+                    MaterialButton(child: Text("Delete Card"), onPressed: () {
+                      context.read<OwnCardOverviewCubit>().deleteCard();
+                    }),
+
+                  ],
+                ),
+              ],
+            ),
           ) : CircularProgressIndicator();
         },
       ),
