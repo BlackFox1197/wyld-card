@@ -1,7 +1,7 @@
 //! I2C interfaces
 
 use embedded_hal::i2c::I2c;
-use core::convert::Infallible;
+// use core::convert::Infallible;
 use core::fmt::Debug;
 use core::task::Poll;
 
