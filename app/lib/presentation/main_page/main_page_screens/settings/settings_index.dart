@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wyld_card/core/Cubits/settings_cubit/settings_cubit.dart';
+import 'package:wyld_card/presentation/main_page/main_page_screens/settings/bluetooth/bluetooth_index.dart';
+import 'package:wyld_card/presentation/main_page/main_page_screens/settings/bt_no_cb/BT_OV.dart';
 import 'package:wyld_card/shared/gen_dialog.dart';
 
 class SettingsIndex extends StatelessWidget {
@@ -24,6 +26,8 @@ class SettingsIndex extends StatelessWidget {
                         .then((value) => value ? context.read<SettingsCubit>().clearStorage() : null);
                   }
                   ),
+            BluetoothIndex()
+            //BTOV()
           ],
           ),
         );
