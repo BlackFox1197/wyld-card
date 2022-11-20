@@ -2,10 +2,9 @@
 
 use embedded_hal::i2c::I2c;
 // use core::convert::Infallible;
-use core::fmt::Debug;
-use core::task::Poll;
+use core::{fmt::Debug, task::Poll};
 
-use embedded_hal::i2c::{Operation};
+use embedded_hal::i2c::Operation;
 // use embedded_hal::digital::InputPin;
 
 use crate::Interface;
@@ -20,14 +19,14 @@ pub const I2C_ADDRESS: u8 = 0x24;
 #[derive(Clone, Debug)]
 pub struct I2CInterface<I2C>
 where
-    I2C: I2c
+    I2C: I2c,
 {
     pub i2c: I2C,
 }
 
 impl<I2C> Interface for I2CInterface<I2C>
 where
-    I2C: I2c
+    I2C: I2c,
 {
     type Error = I2C::Error;
 

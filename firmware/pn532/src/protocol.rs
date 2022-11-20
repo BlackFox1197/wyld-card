@@ -2,8 +2,10 @@ use core::fmt::Debug;
 
 // use embedded_hal::timer::CountDown;
 
-use crate::requests::{BorrowedRequest, Command};
-use crate::{Interface, Request};
+use crate::{
+    requests::{BorrowedRequest, Command},
+    Interface, Request,
+};
 
 const PREAMBLE: [u8; 3] = [0x00, 0x00, 0xFF];
 const POSTAMBLE: u8 = 0x00;

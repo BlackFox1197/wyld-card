@@ -1,8 +1,10 @@
 //! SerialPort interface
 
 use core::task::Poll;
-use std::io::Write;
-use std::time::{Duration, Instant};
+use std::{
+    io::Write,
+    time::{Duration, Instant},
+};
 
 use embedded_hal::timer::CountDown;
 use serialport::SerialPort;

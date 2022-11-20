@@ -47,19 +47,19 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 #![cfg_attr(doc, feature(doc_cfg))]
 
-use core::fmt::Debug;
-use core::task::Poll;
-use core::time::Duration;
+use core::{fmt::Debug, task::Poll, time::Duration};
 
-pub use crate::protocol::{Error, Pn532};
-pub use crate::requests::Request;
+pub use crate::{
+    protocol::{Error, Pn532},
+    requests::Request,
+};
 
 pub mod i2c;
+mod protocol;
+pub mod requests;
 #[cfg(feature = "std")]
 #[cfg_attr(doc, doc(cfg(feature = "std")))]
 pub mod serialport;
-mod protocol;
-pub mod requests;
 // pub mod spi;
 
 /// Abstraction over the different serial links.
@@ -242,7 +242,6 @@ impl IntoDuration for u64 {
         Duration::from_micros(self)
     }
 }
-
 
 // #[doc(hidden)]
 // FIXME: #[cfg(doctest)] once https://github.com/rust-lang/rust/issues/67295 is fixed.

@@ -19,9 +19,14 @@ esp-idf-hal = { git = "https://github.com/esp-rs/esp-idf-hal.git" }
 sh1106 = "0.4.0"
 anyhow = "1"
 embedded-hal = "1.0.0-alpha.9"
-# Patched for embedded-hal 1.0-alpha
+
+# Patched for embedded-hal 1.0-alpha.9
 pn532 = { path = "pn532" }
+# Patched for embedded-hal 1.0-alpha.9
+bluedroid = { path = "bluedroid" }
 
 [build-dependencies]
 embuild = "0.30"
 anyhow = "1"
+
+[workspace]

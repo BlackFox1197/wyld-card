@@ -5,8 +5,10 @@ use std::time::Duration;
 
 use clap::{App, Arg};
 
-use pn532::serialport::{SerialPortInterface, SysTimer};
-use pn532::{Pn532, Request};
+use pn532::{
+    serialport::{SerialPortInterface, SysTimer},
+    Pn532, Request,
+};
 
 const PROGRAM: Option<&'static str> = option_env!("CARGO_PKG_NAME");
 const VERSION: Option<&'static str> = option_env!("CARGO_PKG_VERSION");
