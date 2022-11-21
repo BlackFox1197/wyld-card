@@ -30,17 +30,24 @@ use pn532::{
 };
 use sh1106::{prelude::*, Builder};
 
-// TODO: Document pin connections
-
-// DIP switch config for i2c
-// 1   # ON
-// 2 #   KE
-
-// dc 16
+// Display pin configuration (SH1106-based 1.3" OLED LCD)
+// gnd GND
+// vcc V5
 // clk 14
 // mosi/sdo 13
-// cs 15
 // res 19
+// dc 16
+// cs 15
+
+// NFC module pin configuration (PN532 module)
+// gnd GND
+// vcc 3V3
+// sda 21
+// scl 22
+
+// DIP switch config (i2c) for PN532
+// 1   # ON
+// 2 #   KE
 
 fn main() -> anyhow::Result<()> {
     esp_idf_svc::log::EspLogger::initialize_default();
